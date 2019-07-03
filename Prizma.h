@@ -9,14 +9,15 @@ using namespace std;
 class prizma
 {
 private:
-	float a, b, c, h;
-	float S_poln, S_bok, S_osnov, V, p;
+	double a, b, c, h;
+	double S_poln, S_bok, S_osnov, V, p;
 public:
 	prizma();
-	prizma(float a, float b, float c, float h);
-	void set(float a, float b, float c, float h);
+	prizma(double a, double b, double c, double h);
+	void set(double a, double b, double c, double h);
 	void get();
-	void Decision();
+	double Volume(double a, double b, double c, double h);
+	double Surface_area(double a, double b, double c, double h);
 	prizma(const prizma&prizma);
 	~prizma();
 };
