@@ -9,14 +9,15 @@ using namespace std;
 class cub
 {
 private:
-	float a;
-	float S_poln, V;
+	double a;
+	double S_poln, V;
 public:
 	cub();
-	cub(float a);
-	void set(float a);
+	cub(double a);
+	void set(double a);
 	void get();
-	void Decision();
+	double Volume(double a);
+	double Surface_area(double a);
 	cub(const cub&cub);
 	~cub();
 };
