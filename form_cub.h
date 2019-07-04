@@ -25,6 +25,7 @@ namespace Praktika3 {
 		}
 
 	protected:
+
 		/// <summary>
 		/// Освободить все используемые ресурсы.
 		/// </summary>
@@ -127,6 +128,7 @@ namespace Praktika3 {
 			this->num1->Name = L"num1";
 			this->num1->Size = System::Drawing::Size(150, 20);
 			this->num1->TabIndex = 4;
+			this->num1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &form_cub::num1_KeyPress);
 			// 
 			// label7
 			// 
@@ -234,26 +236,34 @@ namespace Praktika3 {
 		cub volume;
 		if (number1 > 0)
 		{
-			double decision1 = volume.Volume(number1);
-			num2->Text = System::Convert::ToString(decision1);
+			double decision2 = volume.Volume(number1);
+			num2->Text = System::Convert::ToString(decision2);
 		}
 		else
 		{
 			num2->Text = "Error!!!";
 		}
+
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		double number1 = System::Convert::ToDouble(num1->Text);
-		cub surface_area;
-		if (number1 > 0)
-		{
-			double decision2 = surface_area.Surface_area(number1);
-			num3->Text = System::Convert::ToString(decision2);
-		}
-		else
-		{
-			num3->Text = "Error!!!";
+			/*double number1 = System::Convert::ToDouble(num1->Text);
+			cub surface_area;
+			if (number1 > 0)
+			{
+				double decision2 = surface_area.Surface_area(number1);
+				num3->Text = System::Convert::ToString(decision2);
+			}
+			else
+			{
+				num3->Text = "Error!!!";
+			}*/
+	}
+
+	private: System::Void num1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+
+		if ((e->KeyChar != (char)8) && (e->KeyChar < (char)48 || e->KeyChar >(char)57)) {
+			e->Handled = true;
 		}
 	}
-	};
+};
 }

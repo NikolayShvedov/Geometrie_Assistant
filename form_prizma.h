@@ -117,6 +117,7 @@ namespace Praktika3 {
 			this->num3->Name = L"num3";
 			this->num3->Size = System::Drawing::Size(136, 20);
 			this->num3->TabIndex = 23;
+			this->num3->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &form_prizma::num3_KeyPress);
 			// 
 			// num2
 			// 
@@ -124,6 +125,7 @@ namespace Praktika3 {
 			this->num2->Name = L"num2";
 			this->num2->Size = System::Drawing::Size(136, 20);
 			this->num2->TabIndex = 22;
+			this->num2->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &form_prizma::num2_KeyPress);
 			// 
 			// num1
 			// 
@@ -131,6 +133,7 @@ namespace Praktika3 {
 			this->num1->Name = L"num1";
 			this->num1->Size = System::Drawing::Size(136, 20);
 			this->num1->TabIndex = 21;
+			this->num1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &form_prizma::num1_KeyPress);
 			// 
 			// label4
 			// 
@@ -184,6 +187,7 @@ namespace Praktika3 {
 			this->num4->Name = L"num4";
 			this->num4->Size = System::Drawing::Size(136, 20);
 			this->num4->TabIndex = 25;
+			this->num4->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &form_prizma::num4_KeyPress);
 			// 
 			// button3
 			// 
@@ -291,27 +295,27 @@ namespace Praktika3 {
 		this->Close();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		double number1 = System::Convert::ToDouble(num1->Text);
-		double number2 = System::Convert::ToDouble(num2->Text);
-		double number3 = System::Convert::ToDouble(num3->Text);
-		double number4 = System::Convert::ToDouble(num4->Text);
-		prizma volume;
-		if ((number1 > 0) && (number2 > 0) && (number3 > 0) && (number4 > 0))
-		{
-			if (((number1 + number2) > number3) && ((number2 + number3) > number1) && ((number1 + number3) > number2))
+			double number1 = System::Convert::ToDouble(num1->Text);
+			double number2 = System::Convert::ToDouble(num2->Text);
+			double number3 = System::Convert::ToDouble(num3->Text);
+			double number4 = System::Convert::ToDouble(num4->Text);
+			prizma volume;
+			if ((number1 > 0) && (number2 > 0) && (number3 > 0) && (number4 > 0))
 			{
-				double decision1 = volume.Volume(number1, number2, number3, number4);
-				num5->Text = System::Convert::ToString(decision1);
+				if (((number1 + number2) > number3) && ((number2 + number3) > number1) && ((number1 + number3) > number2))
+				{
+					double decision1 = volume.Volume(number1, number2, number3, number4);
+					num5->Text = System::Convert::ToString(decision1);
+				}
+				else
+				{
+					num5->Text = "Error!!!";
+				}
 			}
 			else
 			{
-				num5->Text = "Error!";
+				num5->Text = "Error!!!";
 			}
-		}
-		else
-		{
-			num5->Text = "Error!";
-		}
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		double number1 = System::Convert::ToDouble(num1->Text);
@@ -328,13 +332,33 @@ namespace Praktika3 {
 			}
 			else
 			{
-				num6->Text = "Error!";
+				num6->Text = "Error!!!";
 			}
 		}
 		else
 		{
-			num6->Text = "Error!";
+			num6->Text = "Error!!!";
 		}
 	}
-	};
+	private: System::Void num1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if ((e->KeyChar != (char)8) && (e->KeyChar < (char)48 || e->KeyChar >(char)57)) {
+			e->Handled = true;
+		}
+	}
+private: System::Void num2_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+	if ((e->KeyChar != (char)8) && (e->KeyChar < (char)48 || e->KeyChar >(char)57)) {
+		e->Handled = true;
+	}
+}
+private: System::Void num3_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+	if ((e->KeyChar != (char)8) && (e->KeyChar < (char)48 || e->KeyChar >(char)57)) {
+		e->Handled = true;
+	}
+}
+private: System::Void num4_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+	if ((e->KeyChar != (char)8) && (e->KeyChar < (char)48 || e->KeyChar >(char)57)) {
+		e->Handled = true;
+	}
+}
+};
 }
