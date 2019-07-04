@@ -3,18 +3,21 @@
 #define PARALLELEPIPED_H
 #include <iostream>
 #include <math.h>
+#include "stdafx.h"
+
 
 class parallelepiped
 {
     private:
-	float a, b, c;
-	float S_poln, V;
+		double a, b, c;
+		double S_poln, V;
 	public:
-		parallelepiped(float a, float b, float c);
+		parallelepiped(double a, double b, double c);
 		parallelepiped();
-		void set(float a, float b, float c);
+		void set(double a, double b, double c);
 		void get();
-		void Decision();
+		double Volume(double a, double b, double c);
+		double Surface_area(double a, double b, double c);
 		parallelepiped(const parallelepiped&parallelepiped);
 		~parallelepiped();
 };
